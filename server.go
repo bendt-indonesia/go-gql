@@ -11,7 +11,7 @@ import (
 	"github.com/bendt-indonesia/go-gql/graph/generated"
 )
 
-const defaultPort = "8080"
+const defaultPort = "9001"
 
 func main() {
 	port := os.Getenv("PORT")
