@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-gql/graph"
-	"go-gql/graph/generated"
-	db "go-gql/internal/pkg/db/mysql"
+	"github.com/bendt-indonesia/go-gql/graph"
+	"github.com/bendt-indonesia/go-gql/graph/generated"
+	db "github.com/bendt-indonesia/go-gql/internal/pkg/db/mysql"
 
 	"log"
 	"net/http"
