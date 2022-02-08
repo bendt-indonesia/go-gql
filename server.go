@@ -1,14 +1,18 @@
 package main
 
 import (
+	"go-gql/graph"
+	"go-gql/graph/generated"
+	db "go-gql/internal/pkg/db/mysql"
+
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/bendt-indonesia/go-gql/graph"
-	"github.com/bendt-indonesia/go-gql/graph/generated"
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/golang-migrate/migrate/source/file"
 )
 
 const defaultPort = "9001"
@@ -19,6 +23,8 @@ func main() {
 		port = defaultPort
 	}
 
+	db.InitDB()
+	db.Migrate()
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))

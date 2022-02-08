@@ -6,24 +6,33 @@ package graph
 import (
 	"context"
 	"fmt"
-	"math/rand"
 
 	"github.com/bendt-indonesia/go-gql/graph/generated"
 	"github.com/bendt-indonesia/go-gql/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	todo := &model.Todo{
-		Text: input.Text,
-		ID:   fmt.Sprintf("T%d", rand.Int()),
-		User: &model.User{ID: input.UserID, Name: "user " + input.UserID},
-	}
-	r.todos = append(r.todos, todo)
-	return todo, nil
+func (r *mutationResolver) CreateBook(ctx context.Context, title string, author string) (*model.Book, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	return r.todos, nil
+func (r *mutationResolver) CreatAuthor(ctx context.Context, firstName string, lastName string) (*model.Author, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) BookByID(ctx context.Context, id *string) (*model.Book, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) AllBooks(ctx context.Context) ([]*model.Book, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) AuthorByID(ctx context.Context, id *string) (*model.Author, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) AllAuthors(ctx context.Context) ([]*model.Author, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
 // Mutation returns generated.MutationResolver implementation.
